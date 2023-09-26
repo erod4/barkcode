@@ -1,10 +1,40 @@
-import "./App.css";
+import "./style.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./Components/Landing-Page_Component/Landing";
+import Login from "./Components/Login-Component/Login";
+import Register from "./Components/Register-Component/Register";
+import NotFound from "./Components/NotFound-component/NotFound";
+import ForgotPassword from "./Components/ForgotPassComponent/ForgotPassword";
+import Home from "./Components/Home-components/Home";
+import ManagePets from "./Components/ManagePets-Component/ManagePets";
+import Settings from "./Components/Settings-Component/Settings";
+import AddPet from "./Components/Add-Pet Component/AddPet";
+import AddAlert from "./Components/AddAlert-Component/AddAlert";
+import PetProfile from "./Components/PetProfile-Component/PetProfile";
+
+import QRCode from "./Components/QRCodeComponent/QRCode";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+
+        <Route path="/home" element={<Home />}></Route>
+
+        <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+        <Route path="/manage-pets/" element={<ManagePets />}></Route>
+        <Route path="/pet-profile/:id" element={<PetProfile />}></Route>
+        <Route path="/settings" element={<Settings />}></Route>
+        <Route path="/qr" element={<QRCode />}></Route>
+        <Route path="/add-pet" element={<AddPet />}></Route>
+        <Route path="/create-alert" element={<AddAlert />}></Route>
+
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

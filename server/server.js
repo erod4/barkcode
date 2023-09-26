@@ -1,26 +1,36 @@
 const express = require("express");
-app = express();
+const cors = require("cors");
+const app = express();
+require("dotenv").config();
+const PORT = process.env.PORT || 8080;
+const userRoute = require("./routes/users/usersRoute");
+const alertRoute = require("./routes/alerts/alertsRoute");
+const notificationRoute = require("./routes/notifications/notificationRoute");
+const petsRoute = require("./routes/pets/petsRoute");
+const globalErrorHandler = require("./middlewares/globalErroHandler");
+const qrCodeRoute = require("./routes/qrcode/qrRoute");
+const photoRoute = require("./routes/images/imgRoute");
+require("./config/dbConnect");
 
-const port = 8080;
-//import route functions
-const router = require("./routes/router");
-//all route middleware
-//start
+//store env variables
 
-//pass json data
+//middlewares
+//*pass incoming data
 app.use(express.json());
+//cors middleware
+app.use(cors());
+app.use("/api/v1/users", userRoute);
+app.use("/api/v1/alerts", alertRoute);
+app.use("/api/v1/notifications", notificationRoute);
+app.use("/api/v1/pets", petsRoute);
+app.use("/api/v1/QRCode", qrCodeRoute);
+app.use("/api/v1/photo", photoRoute);
+//Routes
+//*user Route
 
-//pass form data
-app.use(express.urlencoded({ extended: true }));
-//routes
-app.use("/", router);
-//end
-
-//start server
-app.listen(port, (err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(`Server Running on Port: ${port}`);
-  }
+//Error handlers
+app.use(globalErrorHandler);
+//Listen to Server
+app.listen(PORT, () => {
+  console.log(`Server Running On Port ${PORT}`);
 });

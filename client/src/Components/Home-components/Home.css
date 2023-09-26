@@ -1,0 +1,103 @@
+.home-page {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.home-content {
+  flex: 1;
+  background-color: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.home-heading {
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+}
+
+.home-main-conent {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-notifications,
+.home-active-alerts,
+.home-resources {
+  height: 30vh;
+  background-color: #2a2a2a;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+.add-alert-link {
+  background-color: red;
+}
+.home-resource {
+  background-color: #eee;
+}
+.content-title {
+  color: #7295f6;
+  font-size: medium;
+  padding: 10px;
+}
+.notification-icon {
+  margin-left: 5px;
+}
+.home-alert-icon {
+  margin-left: 5px;
+}
+@media (min-width: 768px) {
+  .home-alert,
+  .home-resource {
+    width: 80%;
+  }
+  .home-main-conent {
+    width: 80%;
+  }
+  .home-notifications::-webkit-scrollbar {
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    width: 0.5em;
+  }
+  .home-notifications::-webkit-scrollbar-thumb {
+    background-color: #eee;
+    outline: 1px solid slategrey;
+    border-radius: 8px;
+  }
+  .home-active-alerts::-webkit-scrollbar {
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    width: 0.5em;
+  }
+  .home-active-alerts::-webkit-scrollbar-thumb {
+    background-color: #eee;
+    outline: 1px solid slategrey;
+    border-radius: 8px;
+  }
+  .home-resources::-webkit-scrollbar {
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    width: 0.5em;
+  }
+  .home-resources::-webkit-scrollbar-thumb {
+    background-color: #eee;
+    outline: 1px solid slategrey;
+    border-radius: 8px;
+  }
+  .add-alert-link-container {
+    width: 80%;
+  }
+}

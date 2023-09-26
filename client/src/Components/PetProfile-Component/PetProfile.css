@@ -1,0 +1,74 @@
+.pet-profile-page {
+  color: #eee;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+.profile-card {
+  width: 80%;
+  height: 70%;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.profile-photo-container {
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pet-profile-photo {
+  padding: 10px;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.profile-name-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  padding: 10px;
+  border-bottom: solid 2px #7295f6;
+}
+.profile-name {
+  width: 100%;
+  text-align: center;
+  color: #eee;
+}
+.description-container,
+.phone-email-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  padding: 20px;
+}
+.description-text,
+.phone,
+.email {
+  text-align: left;
+  width: 100%;
+  font-size: medium;
+}
+.phone,
+.email {
+  padding-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .profile-card {
+    width: 400px;
+  }
+}

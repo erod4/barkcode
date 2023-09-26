@@ -1,0 +1,149 @@
+.add-pet-page {
+  display: flex;
+  flex-direction: row;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.add-pet-main-content {
+  background-color: #1e1e1e;
+  color: #eee;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.add-pet-form-container {
+  height: 95%;
+  border: solid 1px #2a2a2a;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+.add-pet-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  height: 100%;
+  align-items: center;
+}
+.add-pet-form-title {
+  text-align: center;
+  width: 100%;
+}
+
+.pet-form-labels {
+  width: 90%;
+  margin-top: 10px;
+}
+.pet-form-input-1 {
+  width: 90%;
+  margin-top: 10px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  color: #1e1e1e;
+  padding-left: 10px;
+}
+.contact-info-container div {
+  width: 100%;
+}
+.phone-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#email {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#input {
+  width: 95%;
+}
+
+.file-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.file-container label {
+  padding: 10px;
+  font-size: 15px;
+  color: #7295f6;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input[type="file"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+}
+input[type="file"] button {
+  border: solid 1px red;
+}
+.contact-info-container {
+  width: 90%;
+  display: flex;
+
+  flex-direction: row;
+  justify-content: center;
+}
+.pet-form-submit-button-1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 90%;
+  border: none;
+  border-radius: 8px;
+  background-color: #7295f6;
+  color: #1e1e1e;
+  font-weight: bolder;
+  height: 60px;
+}
+.pet-form-textarea {
+  width: 90%;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 5px;
+}
+.pet-icon {
+  font-size: 30px;
+  padding: 20px;
+  color: #7295f6;
+}
+
+#reader {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}
+@media (min-width: 768px) {
+  .add-pet-form-container {
+    max-width: 50%;
+    height: 80%;
+  }
+  .pet-form-submit-button {
+    margin-bottom: none;
+  }
+}

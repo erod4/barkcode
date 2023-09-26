@@ -1,0 +1,16 @@
+.error-page {
+  background-image: url("../../../public/images/401\ Error\ Unauthorized-cuate.svg");
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  z-index: -1;
+  width: 100%;
+  background-size: cover;
+}
+.error-page-title {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  color: #ff725e;
+  font-size: large;
+}

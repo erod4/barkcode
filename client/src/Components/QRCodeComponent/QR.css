@@ -1,0 +1,19 @@
+.qr-code-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: #1e1e1e;
+}
+#reader {
+  width: 50%;
+  height: 50%;
+  background-color: #eee;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
