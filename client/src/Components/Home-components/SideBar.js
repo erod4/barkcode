@@ -26,7 +26,7 @@ const SideBar = ({ name }) => {
           <aside className="side-bar">
             <div className="side-bar-close-button-container">
               <button onClick={toggleSideBar} className="side-bar-close-button">
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
               </button>
             </div>
             <h1 className="user-full-name">Welcome {profile?.firstname}</h1>
@@ -48,6 +48,15 @@ const SideBar = ({ name }) => {
                   <Link className="nav-link" to={"/manage-pets"}>
                     <i className="icon fa-solid fa-paw"></i>
                     Manage Pets
+                  </Link>
+                </div>
+                <div
+                  id={activePage.pathname === "/resources" ? "active" : ""}
+                  className="menu-option"
+                >
+                  <Link className="nav-link" to={"/resources"}>
+                    <i className="icon fa-solid fa-book"></i>
+                    Resources
                   </Link>
                 </div>
               </div>
@@ -74,7 +83,7 @@ const SideBar = ({ name }) => {
       ) : (
         <aside className="closed-side-bar">
           <button className="open-sidebar-button" onClick={toggleSideBar}>
-            <i class="fa-solid fa-bars"></i>
+            <i className="fa-solid fa-bars"></i>
           </button>
         </aside>
       )}

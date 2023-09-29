@@ -41,7 +41,7 @@ const PetProfiles = ({ pets }) => {
                 return (
                   <tr className="table-row tbrd" key={pet._id}>
                     <td className="table-data">
-                      <Link class="tooltip to-pet-profile" to={pet.qrURL}>
+                      <Link className="tooltip to-pet-profile" to={pet.qrURL}>
                         <span className="tooltiptext">Pet Profile</span>
                         {pet.name.toUpperCase()}
                       </Link>

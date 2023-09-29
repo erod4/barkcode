@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
     loginUserAction(formData);
   };
-  console.log(userAuth);
+
   return (
     <div className="login-page">
       <form onSubmit={onSubmitHandler} className="login-form">

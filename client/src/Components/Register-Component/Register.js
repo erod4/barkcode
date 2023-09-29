@@ -1,13 +1,42 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Landing-Page_Component/Button";
+
 import "./Register.css";
+import { authContext } from "../../Context/Auth/AuthContext";
 const Register = () => {
+  const { registerUserAction, error } = useContext(authContext);
+
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+
+  const { firstname, lastname, email, password } = formData;
+
+  const onChangeInput = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onRegSubmitHandler = (e) => {
+    e.preventDefault();
+
+    registerUserAction(formData);
+  };
+
+  console.log(error);
+
   return (
     <div className="register-page">
-      <form className="register-form">
+      <form onSubmit={onRegSubmitHandler} className="register-form">
         <div className="register-container">
           <h1 className="register-form-title">Register</h1>
+          {error && <span className="login-message">{error}</span>}
           <label className="label-name">First Name</label>
           <div className="name-div">
             <input
@@ -15,6 +44,9 @@ const Register = () => {
               placeholder="Type your first name"
               type="text"
               name="firstname"
+              onChange={onChangeInput}
+              value={firstname}
+              required
             />
           </div>
           <label className="label-name">Last Name</label>
@@ -24,15 +56,21 @@ const Register = () => {
               placeholder="Type your last name"
               type="text"
               name="lastname"
+              onChange={onChangeInput}
+              value={lastname}
+              required
             />
           </div>
-          <label className="label-name">UserName</label>
+          <label className="label-name">Email</label>
           <div className="name-div">
             <input
               className="input-field"
-              placeholder="Type your username"
+              placeholder="Type your email"
               type="text"
               name="email"
+              onChange={onChangeInput}
+              value={email}
+              required
             />
           </div>
           <label className="label-name">Password</label>
@@ -40,12 +78,17 @@ const Register = () => {
             <input
               className="input-field"
               placeholder="Type your password"
-              type="text"
-              name="email"
+              type="password"
+              name="password"
+              onChange={onChangeInput}
+              value={password}
+              required
             />
           </div>
 
-          <Button text={"Register"} width={300} height={50} link={"/home"} />
+          <button className="login-form-button reg-btn" type="submit">
+            Register
+          </button>
         </div>
         <div className="register-container">
           <p>Or Login Using</p>

@@ -60,6 +60,16 @@
   color: #eee;
   width: 300px;
 }
+.register-container input:-webkit-autofill {
+  -webkit-text-fill-color: #eee !important; /* Text color */
+  background-color: #1c1c1c !important; /* Background color */
+  transition: background-color 5000s ease-in-out 0s; /* Transition if desired */
+}
+
+/* To style the placeholder text color */
+.register-container input:-webkit-autofill::placeholder {
+  color: #eee !important;
+}
 .forgot-password-link {
   width: 300px;
 
@@ -85,4 +95,7 @@
   color: #eee;
   padding: 20px 0;
   text-decoration: underline;
+}
+.reg-btn {
+  width: 300px;
 }

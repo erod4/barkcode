@@ -49,10 +49,6 @@ const Home = () => {
               </div>
               <Alerts alerts={profile?.alerts} />
             </div>
-            <div className="home-resources">
-              <h1 className="content-title">Resources</h1>
-              <div className="home-resource"></div>
-            </div>
           </main>
         </div>
       )}

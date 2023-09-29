@@ -25,8 +25,13 @@ const registerUserController = async (req, res, next) => {
       password: hashPassword,
       hasCreatedAccount: true,
     });
-
-    res.json({ status: "Success", firstname: user.firstname, id: user._id });
+    console.log(user);
+    res.json({
+      status: "success",
+      firstname: user.firstname,
+      id: user._id,
+      token: generateToken(user._id),
+    });
   } catch (error) {
     return next(new Error(error));
   }
@@ -92,21 +97,49 @@ const deleteProfileController = async (req, res, next) => {
 };
 const updateProfileController = async (req, res, next) => {
   try {
+    const { firstname, lastname, email, password } = req.body;
+    console.log(req.body);
     //*check if email exists
     if (req.body.email) {
-      const userFound = await User.findOne({ email: req.body.email });
+      const userFound = await User.findOne({ email });
       if (userFound) {
-        return next(new AppErr("Email Exists", 400));
+        return next(new AppErr("Email Already In Use", 400));
+      } else {
+        await User.findByIdAndUpdate(
+          req.user,
+          { email },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
       }
     }
-    const user = await User.findByIdAndUpdate(req.user, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    if (req.body.firstname) {
+      const user = await User.findByIdAndUpdate(
+        req.user,
+        { firstname },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+    if (req.body.lastname) {
+      console.log("got here");
+      const user = await User.findByIdAndUpdate(
+        req.user,
+        { lastname },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
     //*check if user is updating the password
     if (req.body.password) {
       const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(req.body.password, salt);
+      const hashedPassword = await bcrypt.hash(password, salt);
       //*update the user
       const user = await User.findByIdAndUpdate(
         req.user,
@@ -118,12 +151,11 @@ const updateProfileController = async (req, res, next) => {
           runValidators: true,
         }
       );
-      //*send response
-      return res.status(200).json({
-        status: "success",
-        data: user,
-      });
     }
+
+    return res.status(200).json({
+      status: "success",
+    });
     //update other fields
   } catch (error) {
     next(new AppErr(error.message, 500));

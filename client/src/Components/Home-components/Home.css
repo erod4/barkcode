@@ -31,11 +31,10 @@
   justify-content: center;
 }
 .home-notifications,
-.home-active-alerts,
-.home-resources {
+.home-active-alerts {
   height: 30vh;
   background-color: #2a2a2a;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;

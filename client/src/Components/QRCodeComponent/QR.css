@@ -8,12 +8,28 @@
   background-color: #1e1e1e;
 }
 #reader {
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 60%;
   background-color: #eee;
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+#html5-qrcode-anchor-scan-type-change {
+  display: none;
+  color: #eee;
+  z-index: -10;
+  pointer-events: none;
+}
+#reader__dashboard_section span {
+  display: none;
+  color: #eee;
+  z-index: -10;
+  pointer-events: none;
+}
+#html5-qrcode-button-camera-permission {
+  height: 30px;
+  z-index: 4;
 }

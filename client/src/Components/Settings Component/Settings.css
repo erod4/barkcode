@@ -1,0 +1,198 @@
+.settings-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.settings-main-page {
+  height: 100vh;
+  width: 100%;
+  background-color: #1c1c1c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.settings-container {
+  background-color: #1c1c1c;
+  color: #eee;
+  width: 90%;
+  height: 80vh;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  border: solid 2px #2a2a2a;
+  z-index: 0;
+}
+.settings-title {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 900;
+  border-bottom: solid 2px #2a2a2a;
+  color: #7295f6;
+}
+.main-info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+.settings-form {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+.settings-form-label {
+  width: 90%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.settings-form-input {
+  height: 40px;
+  width: 90%;
+  padding-bottom: 10px;
+  font-size: 20px;
+  border-radius: 0px;
+  cursor: pointer;
+  background-color: #1c1c1c;
+  color: #eee;
+  border: none;
+  border-bottom: solid 1px #2a2a2a;
+}
+.settings-form-input:focus {
+  outline: none;
+  border-bottom: solid 2px #7295f6;
+
+  padding-left: 3px;
+}
+.settings-form-input:focus::placeholder {
+  color: transparent;
+}
+::placeholder {
+  color: #eee;
+}
+.settings-form-save-button {
+  padding: 15px;
+  margin-top: 10px;
+  width: 90%;
+  background-color: #63c853;
+  border: none;
+  border-radius: 8px;
+  font-weight: 900;
+  font-size: 18px;
+  color: #1c1c1c;
+  cursor: pointer;
+  height: 50px;
+}
+.delete-account-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 10vh;
+
+  width: 90%;
+  height: 100%;
+}
+.delete-account-button {
+  height: 50px;
+  padding: 15px;
+  width: 90%;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  font-weight: 900;
+  font-size: 18px;
+  color: #1c1c1c;
+  cursor: pointer;
+  border: none;
+  background-color: red;
+}
+.confirm-delete {
+  position: absolute;
+  background: rgba(238, 238, 238, 0.25);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.confirm-delete-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1c1c1c;
+  border: solid 2px #2a2a2a;
+  height: 200px;
+  text-align: center;
+  border-radius: 8px;
+  color: #eee;
+}
+.confirm-delete-container h1 {
+  font-size: 22px;
+  padding: 15px;
+}
+.confirm-delete-button-container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 80%;
+}
+.confirm-delete-button-container button {
+  height: 50px;
+  width: 48%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #7295f6;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 900;
+  color: #1c1c1c;
+}
+.settings-container input:-webkit-autofill {
+  -webkit-text-fill-color: #eee !important; /* Text color */
+  background-color: #1c1c1c !important; /* Background color */
+  transition: background-color 5000s ease-in-out 0s; /* Transition if desired */
+}
+
+/* To style the placeholder text color */
+.settings-container input:-webkit-autofill::placeholder {
+  color: #eee !important;
+}
+.update-fail-message {
+  width: 100%;
+  text-align: center;
+
+  padding: 5px;
+  color: red;
+}
+.update-succes-message {
+  width: 100%;
+  text-align: center;
+
+  padding: 5px;
+  color: #63c853;
+}
+@media (min-width: 768px) {
+  .settings-container {
+    min-width: 400px;
+    width: 30%;
+    height: 70vh;
+  }
+  .confirm-delete-container {
+    width: 30%;
+  }
+}

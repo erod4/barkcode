@@ -32,7 +32,7 @@
   align-items: center;
 }
 .menus {
-  height: 100vh;
+  height: 100%;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -62,7 +62,7 @@
   justify-content: center;
 }
 .user-options {
-  width: 90%;
+  width: 100%;
 }
 #active {
   background-color: #2a2a2a;
@@ -91,6 +91,7 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  color: #1c1c1c;
 }
 @media (min-width: 768px) {
   .side-bar {

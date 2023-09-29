@@ -6,8 +6,18 @@ import {
   FETCH_PROFILE_FAIL,
   FETCH_PROFILE_SUCCESS,
   LOGOUT,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  UPDATE_PROFILE,
+  UPDATE_PROFILE_FAIL,
+  DELETE_PROFILE,
+  DELETE_PROFILE_FAIL,
 } from "./AuthActionTyes";
-import { API_URL_USER } from "../../utils/apiURL";
+import {
+  API_URL_PROFILE,
+  API_URL_REGISTER,
+  API_URL_USER,
+} from "../../utils/apiURL";
 
 //auth context
 export const authContext = createContext();
@@ -63,6 +73,49 @@ const reducer = (state, action) => {
         loading: false,
         profile: null,
         userAuth: null,
+      };
+    case REGISTER_SUCCESS:
+      localStorage.setItem("userAuth", JSON.stringify(payload));
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        userAuth: payload,
+      };
+    case REGISTER_FAIL:
+      return {
+        ...state,
+        error: payload,
+        loading: false,
+        userAuth: null,
+      };
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        profile: payload,
+      };
+    case UPDATE_PROFILE_FAIL:
+      return {
+        ...state,
+        error: payload,
+        loading: false,
+        profile: null,
+      };
+    case DELETE_PROFILE:
+      localStorage.removeItem("userAuth");
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        profile: null,
+        userAuth: null,
+      };
+    case DELETE_PROFILE_FAIL:
+      return {
+        ...state,
+        error: payload,
       };
     default:
       return state;
@@ -122,20 +175,92 @@ const AuthContextProvider = ({ children }) => {
       });
     }
   };
+  const registerUserAction = async (formData) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const res = await axios.post(API_URL_REGISTER, formData, config);
 
+      if (res?.data?.status === "success") {
+        dispatch({
+          type: REGISTER_SUCCESS,
+          payload: res.data,
+        });
+      }
+      window.location.href = "/home";
+    } catch (error) {
+      dispatch({
+        type: REGISTER_FAIL,
+        payload: error?.response?.data?.message,
+      });
+    }
+  };
   //log out user
   const logoutUserAction = async () => {
     dispatch({
       type: LOGOUT,
       payload: null,
     });
-    console.log("yoooo");
+
     window.location.href = "/";
+  };
+
+  const updateUserAction = async (formData) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${state?.userAuth?.token}`,
+        },
+      };
+      const res = await axios.put(API_URL_USER, formData, config);
+      if (res?.data?.status === "sucesss") {
+        dispatch({
+          type: UPDATE_PROFILE,
+          payload: res.data,
+        });
+      }
+    } catch (error) {
+      dispatch({
+        type: UPDATE_PROFILE_FAIL,
+        payload: error?.response?.data?.message,
+      });
+    }
+  };
+
+  const deleteUserAction = async () => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${state?.userAuth?.token}`,
+        },
+      };
+      const res = await axios.delete(API_URL_USER, config);
+      if (res?.data?.status === "sucesss") {
+        dispatch({
+          type: DELETE_PROFILE,
+          payload: res.data,
+        });
+      }
+      window.location.href = "/";
+    } catch (error) {
+      dispatch({
+        type: DELETE_PROFILE_FAIL,
+        payload: error?.response?.data?.message,
+      });
+    }
   };
   return (
     <authContext.Provider
       value={{
+        deleteUserAction,
+        registerUserAction,
         logoutUserAction,
+        updateUserAction,
         loginUserAction,
         userAuth: state,
         token: state?.userAuth?.token,

@@ -7,19 +7,24 @@ const QRCode = () => {
   useEffect(() => {
     const scanner = new Html5QrcodeScanner("reader", {
       qrbox: {
-        width: 1000,
-        height: 1000,
+        width: 200,
+        height: 200,
       },
       fps: 5,
+      fileInputs: false,
     });
+
+    console.log(scanner);
+
     scanner.render(
       (result) => {
         scanner.clear();
-
+        console.log(scanner);
         setScanResult(result);
       },
       (error) => {
         console.log(error);
+        console.log(scanner);
       }
     );
   }, []);

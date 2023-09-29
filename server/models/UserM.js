@@ -49,6 +49,7 @@ const userSchema = new mongoose.Schema(
     toJSON: { virtuals: true },
   }
 );
+//make fields optional during update
 
 //model
 const User = mongoose.model("User", userSchema);

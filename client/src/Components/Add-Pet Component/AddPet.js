@@ -83,7 +83,7 @@ const AddPet = ({ scanResult }) => {
             />
 
             <div className="contact-info-container">
-              <div class="phone-info-container">
+              <div className="phone-info-container">
                 <label className="pet-form-labels">Phone:</label>
                 <input
                   required
@@ -113,7 +113,7 @@ const AddPet = ({ scanResult }) => {
               </div>
             </div>
             <div className="contact-info-container">
-              <div class="phone-info-container">
+              <div className="phone-info-container">
                 <label className="pet-form-labels">Breed:</label>
                 <input
                   required

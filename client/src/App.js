@@ -7,12 +7,14 @@ import NotFound from "./Components/NotFound-component/NotFound";
 import ForgotPassword from "./Components/ForgotPassComponent/ForgotPassword";
 import Home from "./Components/Home-components/Home";
 import ManagePets from "./Components/ManagePets-Component/ManagePets";
-import Settings from "./Components/Settings-Component/Settings";
+
 import AddPet from "./Components/Add-Pet Component/AddPet";
 import AddAlert from "./Components/AddAlert-Component/AddAlert";
 import PetProfile from "./Components/PetProfile-Component/PetProfile";
 
 import QRCode from "./Components/QRCodeComponent/QRCode";
+import Resources from "./Components/Resources Component/Resources";
+import Settings from "./Components/Settings Component/Settings";
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
 
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         <Route path="/manage-pets/" element={<ManagePets />}></Route>
+        <Route path="/resources" element={<Resources />}></Route>
         <Route path="/pet-profile/:id" element={<PetProfile />}></Route>
         <Route path="/settings" element={<Settings />}></Route>
         <Route path="/qr" element={<QRCode />}></Route>
