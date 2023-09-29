@@ -25,7 +25,7 @@ const registerUserController = async (req, res, next) => {
       password: hashPassword,
       hasCreatedAccount: true,
     });
-    console.log(user);
+
     res.json({
       status: "success",
       firstname: user.firstname,
