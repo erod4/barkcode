@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Alerts.css";
+import { AlertContext } from "../../Context/Alert/AlertContext";
 const Alerts = ({ alerts }) => {
+  const { deleteAlertAction } = useContext(AlertContext);
+  const handleDeleteClick = (id) => {
+    console.log(id);
+    deleteAlertAction(id);
+    // window.location.reload();
+  };
   return (
     <>
       {alerts?.length <= 0 ? (
@@ -28,11 +35,14 @@ const Alerts = ({ alerts }) => {
             ).format(date);
 
             return (
-              <div className="alert" key={alert._id}>
+              <div className="alert" key={alert.id}>
                 <div className="alert-upper-container">
                   <div className="alert-upper-container-right">
                     <h1 className="city">{alert.city}</h1>
-                    <button className="delete-alert-button">
+                    <button
+                      onClick={() => handleDeleteClick(alert.id)}
+                      className="delete-alert-button"
+                    >
                       <i className="fa-solid fa-xmark"></i>
                     </button>
                   </div>

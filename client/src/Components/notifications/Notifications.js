@@ -7,7 +7,6 @@ const Notifications = ({ notifications }) => {
 
   const handleDeleteClick = (id) => {
     deleteNotifAction(id);
-    window.location.reload();
   };
   return (
     <>

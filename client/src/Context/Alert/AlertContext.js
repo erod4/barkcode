@@ -3,6 +3,8 @@ import axios from "axios";
 import {
   ALERT_CREATION_SUCCESS,
   ALERT_CREATION_FAILED,
+  ALERT_DELETE_SUCCESS,
+  ALERT_DELETE_FAILED,
 } from "./AlertActionTypes";
 import { authContext } from "../../Context/Auth/AuthContext";
 import { API_URL_ALERT } from "../../utils/apiURL";
@@ -61,8 +63,32 @@ export const AlertContextProvider = ({ children }) => {
       });
     }
   };
+  const deleteAlertAction = async (id) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userAuth?.userAuth?.token}`,
+        },
+      };
+
+      const res = await axios.delete(API_URL_ALERT + id, config);
+      if (res?.data?.status === "success") {
+        updateState({
+          type: ALERT_DELETE_SUCCESS,
+          payload: res.data,
+        });
+      }
+      window.location.reload();
+    } catch (error) {
+      updateState({
+        type: ALERT_DELETE_FAILED,
+        payload: error?.response?.data?.message,
+      });
+    }
+  };
   return (
-    <AlertContext.Provider value={{ postAlertAction }}>
+    <AlertContext.Provider value={{ postAlertAction, deleteAlertAction }}>
       {children}
     </AlertContext.Provider>
   );

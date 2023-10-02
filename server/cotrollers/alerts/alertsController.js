@@ -22,7 +22,7 @@ const addAlertController = async (req, res, next) => {
     }
     //push alert to individual user
     for (const user of usersFound) {
-      user.alerts.push(alert._id);
+      user.alerts.push(alert.id);
       await user.save();
     }
 
@@ -54,13 +54,15 @@ const getSingleAlertController = async (req, res, next) => {
     next(new AppErr(error, 400));
   }
 };
-const deleteAlertController = async (req, res) => {
-  //*get id for alert you want to delete
-  const { id } = req.params;
+const deleteAlertController = async (req, res, next) => {
   try {
+    //*get id for alert you want to delete
+    const { id } = req.params;
     //*look to see if person deleting it is the one who made it
     const createdBy = req.user;
-    const isCreatedBy = await Alert.findOne(createdBy);
+
+    const isCreatedBy = await Alert.findOne({ _id: id, createdBy });
+
     //*look up alert by id
     if (!isCreatedBy) {
       return next(new AppErr("not creator", 404));
