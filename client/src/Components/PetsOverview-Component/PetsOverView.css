@@ -82,6 +82,14 @@
   transition: opacity 0.3s;
   font-size: 11px;
 }
+.table-row-no-pets {
+  color: #eee;
+  width: 100%;
+}
+.table-row-no-pets {
+  text-align: center;
+  height: 50px;
+}
 .to-pet-profile {
   color: #7295f6;
   text-decoration: underline;

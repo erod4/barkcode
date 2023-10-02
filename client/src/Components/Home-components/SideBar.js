@@ -30,7 +30,7 @@ const SideBar = ({ name }) => {
               </button>
             </div>
             <h1 className="user-full-name">Welcome {profile?.firstname}</h1>
-            <div className="menus">
+            <div className="side-bar-menus">
               <div className="dahsboard-options">
                 <div
                   id={activePage.pathname === "/home" ? "active" : ""}

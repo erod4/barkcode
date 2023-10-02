@@ -18,5 +18,10 @@ petRoute.get("/:id", getSinglePetController);
 
 petRoute.delete("/:id", isLoggedIn, deleteSinglePetController);
 
-petRoute.put("/:id", isLoggedIn, updateSinglePetController);
+petRoute.put(
+  "/:id",
+  upload.single("file"),
+  isLoggedIn,
+  updateSinglePetController
+);
 module.exports = petRoute;

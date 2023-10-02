@@ -6,12 +6,11 @@ const client = require("../../config/Google Maps/geoCode");
 const addPetController = async (req, res, next) => {
   const { name, breed, dob, description, qrURL, phone, email } = req.body;
   try {
-    console.log(qrURL);
     //get code from url
-    console.log(req.file);
+
     const path = req.file.path;
     const code = qrURL.split("/")[qrURL.split("/").length - 1];
-    console.log(code);
+
     //Find the logged in user
     const userFound = await User.findById(req.user);
 
@@ -58,41 +57,50 @@ const getSinglePetController = async (req, res, next) => {
   try {
     const { id } = req.params;
     let message;
-    const { latitude, longitude } = req.query;
+
     //reverse geo
-
-    if (latitude !== "null" && longitude !== "null") {
-      const res = await client.reverseGeocode({
-        params: {
-          latlng: `${latitude},${longitude}`,
-          key: process.env.GOOGLE_MAPS_API_KEY,
-        },
+    if (
+      req.query.latitude !== "undefined" &&
+      req.query.longitude !== "undefined"
+    ) {
+      if (req.query.latitude !== "null" && req.query.longitude !== "null") {
+        const res = await client.reverseGeocode({
+          params: {
+            latlng: `${req.query.latitude},${req.query.longitude}`,
+            key: process.env.GOOGLE_MAPS_API_KEY,
+          },
+        });
+        const address = res.data.results[0].formatted_address;
+        message = `QR Code Was Scanned at ${address}.`;
+      } else {
+        message = `QR Code Was Scanned But No Location Was Provided`;
+      }
+      const pet = await Pet.findOne({ code: id });
+      // console.log(pet);
+      const hasPet = await User.findOne({ pets: pet.id });
+      const notif = await Notification.create({
+        type: "QR Scan",
+        title: ` QR Code Scanned (${pet.name})`,
+        message,
+        userId: hasPet.id,
       });
-      const address = res.data.results[0].formatted_address;
-      message = `QR Code Was Scanned at ${address}.`;
+
+      hasPet.notifications.push(notif.id);
+      await hasPet.save();
+      res.status(200).json({
+        status: "success",
+        data: pet,
+      });
     } else {
-      message = `QR Code Was Scanned But No Location Was Provided`;
+      const pet = await Pet.findById(id);
+
+      res.status(200).json({
+        status: "success",
+        data: pet,
+      });
     }
-    const pet = await Pet.findOne({ code: id });
-    // console.log(pet);
-    const hasPet = await User.findOne({ pets: pet.id });
-    const notif = await Notification.create({
-      type: "QR Scan",
-      title: ` QR Code Scanned (${pet.name})`,
-      message,
-      userId: hasPet.id,
-    });
-
-    hasPet.notifications.push(notif.id);
-    await hasPet.save();
-
-    res.status(200).json({
-      status: "success",
-      data: pet,
-    });
   } catch (error) {
     next(new AppErr(error, 400));
-    console.log(error);
   }
 };
 
@@ -113,19 +121,72 @@ const deleteSinglePetController = async (req, res, next) => {
 };
 const updateSinglePetController = async (req, res, next) => {
   try {
-    //* get id from params
     const { id } = req.params;
-    //*find pet in db by id and update with req.body properties
-    const pets = await Pet.findByIdAndUpdate(id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    res.json({
+
+    const { phone, breed, email, description } = req.body;
+
+    //*check if email exists
+
+    if (req?.file?.path !== undefined) {
+      const path = req.file.path;
+      await Pet.findByIdAndUpdate(
+        id,
+        { path },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+
+    if (req.body.email) {
+      await Pet.findByIdAndUpdate(
+        id,
+        { email },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+    if (req.body.phone) {
+      const pet = await Pet.findByIdAndUpdate(
+        id,
+        { phone },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+    if (req.body.breed) {
+      const pet = await Pet.findByIdAndUpdate(
+        id,
+        { breed },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+
+    if (description.length >= 1) {
+      const pet = await Pet.findByIdAndUpdate(
+        id,
+        { description: description },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+    res.status(200).json({
       status: "success",
-      data: pets,
+      data: "none",
     });
   } catch (error) {
     next(new AppErr(error, 400));
+    console.log(error);
   }
 };
 

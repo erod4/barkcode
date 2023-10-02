@@ -16,6 +16,7 @@ import QRCode from "./Components/QRCodeComponent/QRCode";
 import Resources from "./Components/Resources Component/Resources";
 import Settings from "./Components/Settings Component/Settings";
 import LocationRequest from "./Components/Location Request Component/LocationRequest";
+import EditPetProfile from "./Components/Edit-Pet_profile/EditPetProfile";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/location" element={<LocationRequest />}></Route>
         <Route path="/home" element={<Home />}></Route>
-
+        <Route path="/edit-profile/:id" element={<EditPetProfile />}></Route>
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         <Route path="/manage-pets/" element={<ManagePets />}></Route>
         <Route path="/resources" element={<Resources />}></Route>

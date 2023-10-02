@@ -57,12 +57,12 @@ export const NotifContextProvider = ({ children }) => {
           payload: res?.data,
         });
       }
+      window.location.reload();
     } catch (error) {
       dispatch({
         type: NOTIF_DELETE_FAILED,
         payload: error?.response?.data?.message,
       });
-      console.log(error);
     }
   };
   return (

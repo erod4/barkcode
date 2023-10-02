@@ -25,8 +25,10 @@ const PetProfiles = ({ pets }) => {
         </thead>
         <tbody>
           {pets?.length <= 0 ? (
-            <tr className="table-row" key="">
-              Come back soon...
+            <tr className="table-row-no-pets" key="">
+              <td colSpan="5" className="table-row-no-pets-data">
+                Add a pet to explore pet profiles.
+              </td>
             </tr>
           ) : (
             <>
@@ -39,7 +41,7 @@ const PetProfiles = ({ pets }) => {
                 const ageInYears = Math.floor(ageInMilli / millisecondsPerYear);
 
                 return (
-                  <tr className="table-row tbrd" key={pet._id}>
+                  <tr className="table-row tbrd" key={pet.id}>
                     <td className="table-data">
                       <Link className="tooltip to-pet-profile" to={pet.qrURL}>
                         <span className="tooltiptext">Pet Profile</span>
@@ -50,7 +52,10 @@ const PetProfiles = ({ pets }) => {
                     <td className="table-data">{ageInYears}</td>
                     <td className="table-data">{pet.description}</td>
                     <td className="table-data edit">
-                      <Link className="edit-link tooltip">
+                      <Link
+                        to={`/edit-profile/${pet.id}`}
+                        className="edit-link tooltip"
+                      >
                         <i className="fa-solid fa-pencil"></i>
                         <span className="tooltiptext">Edit Pet Info</span>
                       </Link>

@@ -92,7 +92,7 @@ const petReducer = (state, action) => {
 export const PetContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(petReducer, INITIAL_STATE);
   const { userAuth } = useContext(authContext);
-  console.log();
+
   const postPetAction = async (formData) => {
     const config = {
       headers: {
@@ -115,13 +115,11 @@ export const PetContextProvider = ({ children }) => {
         type: PET_CREATION_FAILED,
         payload: error?.response?.data?.message,
       });
-      console.log(error);
     }
   };
 
   const fetchPetAction = async (id, lat, lng) => {
     try {
-      console.log(lat, lng);
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -133,13 +131,13 @@ export const PetContextProvider = ({ children }) => {
         `${API_URL_PET}/${id}?latitude=${lat}&longitude=${lng}`,
         config
       );
+
       //use dispatch to update state
       if (res?.data?.status === "success") {
         dispatch({
           type: PET_DETAILS_SUCCESS,
           payload: res?.data,
         });
-        console.log(res);
       }
     } catch (error) {
       dispatch({
@@ -169,29 +167,28 @@ export const PetContextProvider = ({ children }) => {
         type: PET_DELETE_FAILED,
         payload: error?.response?.data?.message,
       });
-      console.log(error);
     }
   };
 
   const updatePetAction = async (id, formData) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userAuth?.userAuth?.token}`,
-      },
-    };
     try {
+      console.log(formData);
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${userAuth?.userAuth?.token}`,
+        },
+      };
       const url = API_URL_PET + id;
-      console.log(url);
-      const res = axios.put(url, formData, config);
 
-      if (res?.data?.status === "success") {
+      const res = await axios.put(url, formData, config);
+
+      if (res?.status === "success") {
         dispatch({
           type: PET_UPDATE_SUCCESS,
-          payload: res?.data,
+          payload: res?.status,
         });
       }
-      console.log(res);
     } catch (error) {
       dispatch({
         type: PET_UPDATE_FAILED,

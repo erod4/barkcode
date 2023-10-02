@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 100vh;
 }
 .home-content {
   flex: 1;
@@ -10,7 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 100vh;
+
   overflow-y: auto;
 }
 .home-heading {
@@ -32,7 +33,7 @@
 }
 .home-notifications,
 .home-active-alerts {
-  height: 30vh;
+  height: 35%;
   background-color: #2a2a2a;
   margin-bottom: 20px;
   border-radius: 8px;
