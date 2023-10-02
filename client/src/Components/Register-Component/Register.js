@@ -40,7 +40,7 @@ const Register = () => {
           <label className="label-name">First Name</label>
           <div className="name-div">
             <input
-              className="input-field"
+              className="register-input-field"
               placeholder="Type your first name"
               type="text"
               name="firstname"
@@ -52,7 +52,7 @@ const Register = () => {
           <label className="label-name">Last Name</label>
           <div className="name-div">
             <input
-              className="input-field"
+              className="register-input-field"
               placeholder="Type your last name"
               type="text"
               name="lastname"
@@ -64,7 +64,7 @@ const Register = () => {
           <label className="label-name">Email</label>
           <div className="name-div">
             <input
-              className="input-field"
+              className="register-input-field"
               placeholder="Type your email"
               type="text"
               name="email"
@@ -76,7 +76,7 @@ const Register = () => {
           <label className="label-name">Password</label>
           <div className="password-div">
             <input
-              className="input-field"
+              className="register-input-field"
               placeholder="Type your password"
               type="password"
               name="password"

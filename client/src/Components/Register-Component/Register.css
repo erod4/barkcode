@@ -15,7 +15,7 @@
 .register-form {
   background-color: #1c1c1c;
 
-  width: 50vh;
+  width: 90%;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -23,7 +23,7 @@
   align-items: center;
 }
 .register-container {
-  width: 50vh;
+  width: 100%;
   display: flex;
 
   flex-direction: column;
@@ -40,6 +40,9 @@
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
+  background-color: #1c1c1c;
+
+  width: 80%;
 }
 .user-icon,
 .lock-icon {
@@ -51,14 +54,14 @@
 .fa-user {
   color: #eee;
 }
-.input-field {
+.register-input-field {
   font-size: 1.5rem;
   border: 0;
   outline: 0;
-  background-color: #1c1c1c;
+  background-color: rgba(28, 28, 28, 0.85);
   height: 50px;
   color: #eee;
-  width: 300px;
+  width: 100%;
 }
 .register-container input:-webkit-autofill {
   -webkit-text-fill-color: #eee !important; /* Text color */
@@ -69,9 +72,10 @@
 /* To style the placeholder text color */
 .register-container input:-webkit-autofill::placeholder {
   color: #eee !important;
+  background-color: #1c1c1c;
 }
 .forgot-password-link {
-  width: 300px;
+  width: 80%;
 
   text-align: right;
   text-decoration: none;
@@ -89,7 +93,7 @@
   align-items: center;
 }
 .register-link {
-  width: 300px;
+  width: 80%;
   text-align: center;
   text-decoration: none;
   color: #eee;
@@ -97,5 +101,13 @@
   text-decoration: underline;
 }
 .reg-btn {
-  width: 300px;
+  width: 80%;
+  font-weight: 900;
+}
+
+@media (min-width: 768px) {
+  .register-form {
+    width: 50%;
+    max-width: 500px;
+  }
 }

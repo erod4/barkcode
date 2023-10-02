@@ -1,19 +1,22 @@
-import React, { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext } from "react";
+
 import { petContext } from "../../Context/Pets/PetsContext";
 import "./PetProfile.css";
-const PetProfile = () => {
-  const { fetchPetAction, pet } = useContext(petContext); // This line is updated
-  const params = useParams();
-  const { id } = params;
+import LocationRequest from "../Location Request Component/LocationRequest";
 
-  useEffect(() => {
-    // Call the fetchPetAction function with the ID
-    fetchPetAction(id);
-  }, []);
+const PetProfile = () => {
+  const { pet } = useContext(petContext); // This line is updated
+  // const params = useParams();
+  // const { id } = params;
+
+  // useEffect(() => {
+  //   // Call the fetchPetAction function with the ID
+  //   fetchPetAction(id);
+  // }, []);
 
   return (
     <div className="pet-profile-page">
+      <LocationRequest />
       {pet?.data ? (
         <div className="profile-card">
           <div className="profile-photo-container">

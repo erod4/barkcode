@@ -6,13 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./Context/Auth/AuthContext";
 import { PetContextProvider } from "./Context/Pets/PetsContext";
 import { NotifContextProvider } from "./Context/Notifications/NotContext";
-
+import { AlertContextProvider } from "./Context/Alert/AlertContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthContextProvider>
     <PetContextProvider>
       <NotifContextProvider>
-        <App />
+        <AlertContextProvider>
+          <App />
+        </AlertContextProvider>
       </NotifContextProvider>
     </PetContextProvider>
   </AuthContextProvider>

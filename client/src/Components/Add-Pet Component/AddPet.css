@@ -50,6 +50,9 @@
   color: #1e1e1e;
   padding-left: 10px;
 }
+.pet-form-input-1::placeholder {
+  color: #1e1e1e;
+}
 .contact-info-container div {
   width: 100%;
 }
@@ -96,9 +99,7 @@ input[type="file"] {
   align-items: center;
   color: #eee;
 }
-input[type="file"] button {
-  border: solid 1px red;
-}
+
 .contact-info-container {
   width: 90%;
   display: flex;

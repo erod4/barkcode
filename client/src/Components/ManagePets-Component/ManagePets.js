@@ -3,7 +3,7 @@ import SideBar from "../Home-components/SideBar";
 import { authContext } from "../../Context/Auth/AuthContext";
 import UserNotFound from "../UserNotFound/UserNotFound";
 import "./ManagePets.css";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PetProfiles from "../PetsOverview-Component/PetsOverView";
 
 const ManagePets = () => {

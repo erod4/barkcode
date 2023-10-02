@@ -119,15 +119,20 @@ export const PetContextProvider = ({ children }) => {
     }
   };
 
-  const fetchPetAction = async (id) => {
+  const fetchPetAction = async (id, lat, lng) => {
     try {
+      console.log(lat, lng);
       const config = {
         headers: {
           "Content-Type": "application/json",
         },
       };
+
       //make api call
-      const res = await axios.get(`${API_URL_PET}/${id}`, config);
+      const res = await axios.get(
+        `${API_URL_PET}/${id}?latitude=${lat}&longitude=${lng}`,
+        config
+      );
       //use dispatch to update state
       if (res?.data?.status === "success") {
         dispatch({
@@ -197,6 +202,7 @@ export const PetContextProvider = ({ children }) => {
   return (
     <petContext.Provider
       value={{
+        updatePetAction,
         fetchPetAction,
         postPetAction,
         deletePetAction,

@@ -12,14 +12,17 @@ const Notifications = ({ notifications }) => {
   return (
     <>
       {notifications?.length <= 0 ? (
-        <div>
-          <h1>Check Back Soon</h1>
+        <div className="no-notif-container">
+          <h1 className="no-notif-message">No Notifications To Display</h1>
+          <p className="no-notif-message-details">
+            You have currently no notifications. We'll notify you when something
+            new arrives!
+          </p>
         </div>
       ) : (
         <>
           {notifications?.reverse().map((notification) => {
-            const timestamp = Number(notification.date);
-            const date = new Date(timestamp);
+            const date = new Date(notification.createdAt);
             const options = {
               year: "numeric",
               month: "short",
@@ -47,7 +50,7 @@ const Notifications = ({ notifications }) => {
                 <div>
                   <h1 className="notification-title">{notification.title}</h1>
                 </div>
-                <div className="notification-body">{notification.body}</div>
+                <div className="notification-body">{notification.message}</div>
                 <div className="alert-date notification-date">
                   {formattedDate}
                 </div>

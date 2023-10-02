@@ -41,6 +41,13 @@
   align-items: center;
   overflow-y: auto;
 }
+.add-alert-link-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 90%;
+}
 .add-alert-link {
   background-color: red;
 }

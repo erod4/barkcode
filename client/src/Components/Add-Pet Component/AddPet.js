@@ -162,6 +162,3 @@ const AddPet = ({ scanResult }) => {
 };
 
 export default AddPet;
-{
-  /*  */
-}

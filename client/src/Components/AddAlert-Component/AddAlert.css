@@ -58,21 +58,25 @@
 .alert-form-input {
   width: 90%;
   margin-top: 10px;
-  height: 30px;
+  height: 50px;
   border: none;
   border-radius: 8px;
   color: #1e1e1e;
   padding-left: 10px;
 }
+.alert-form-input::placeholder {
+  color: #1e1e1e;
+}
 .alert-form-submit-button {
   margin-top: 20px;
-  height: 30px;
+  height: 60px;
   width: 90%;
   border: none;
   border-radius: 8px;
   background-color: #7295f6;
   color: #1e1e1e;
-  font-weight: bolder;
+  font-weight: 900;
+  cursor: pointer;
 }
 .alert-form-textarea {
   width: 90%;

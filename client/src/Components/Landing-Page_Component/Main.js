@@ -32,7 +32,7 @@ const Main = () => {
           />
         </div>
         <div className="explore-features-container">
-          <p className="trusted">Trusted by tens of millions worldwide!</p>
+          <p className="trusted">Trusted by many worldwide!</p>
           <div>
             <p className="explore-features-text">Explore our features</p>
             <a href="/" className="explore-features-button">

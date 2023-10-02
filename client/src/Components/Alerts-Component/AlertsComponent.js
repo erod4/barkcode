@@ -4,14 +4,17 @@ const Alerts = ({ alerts }) => {
   return (
     <>
       {alerts?.length <= 0 ? (
-        <div>
-          <h1>Check Back Soon</h1>
+        <div className="no-notif-container">
+          <h1 className="no-notif-message">No Alerts To Display</h1>
+          <p className="no-notif-message-details">
+            You have currently no alerts. We'll notify you when something new
+            arrives!
+          </p>
         </div>
       ) : (
         <>
           {alerts?.reverse().map((alert) => {
-            const timestamp = Number(alert.date);
-            const date = new Date(timestamp);
+            const date = new Date(alert.createdAt);
             const options = {
               year: "numeric",
               month: "short",
@@ -23,7 +26,7 @@ const Alerts = ({ alerts }) => {
               "en-US",
               options
             ).format(date);
-            console.log(formattedDate);
+
             return (
               <div className="alert" key={alert._id}>
                 <div className="alert-upper-container">

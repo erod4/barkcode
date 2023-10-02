@@ -5,7 +5,7 @@ import { authContext } from "../../Context/Auth/AuthContext";
 import UserNotFound from "../UserNotFound/UserNotFound";
 import Notifications from "../notifications/Notifications";
 import Alerts from "../Alerts-Component/AlertsComponent";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { fetchProfileAction, profile, error } = useContext(authContext);
@@ -38,7 +38,7 @@ const Home = () => {
               <h1 className="content-title">
                 Alerts<i className="home-alert-icon fa-solid fa-bell"></i>
               </h1>
-              <div className="add-alert-link-container add-pet-link-container">
+              <div className="add-alert-link-container">
                 <Link
                   className="add-alert-link add-pet-link"
                   to="/create-alert"
