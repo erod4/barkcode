@@ -12,13 +12,15 @@ const qrCodeRoute = require("./routes/qrcode/qrRoute");
 const photoRoute = require("./routes/images/imgRoute");
 require("./config/dbConnect");
 
-//store env variables
+const corsOptions = {
+  origin: "https://lostbarkcode.onrender.com",
+};
 
 //middlewares
 //*pass incoming data
 app.use(express.json());
 //cors middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/alerts", alertRoute);
 app.use("/api/v1/notifications", notificationRoute);
