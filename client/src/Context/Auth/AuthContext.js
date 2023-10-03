@@ -127,6 +127,10 @@ const AuthContextProvider = ({ children }) => {
 
   //login action
   const loginUserAction = async (formData) => {
+    if (userAuth?.userAuth?.token) {
+      window.location.href = "#/home";
+    }
+
     const config = {
       headers: {
         "Content-Type": "application/json",
