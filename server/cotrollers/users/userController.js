@@ -82,6 +82,7 @@ const getProfileController = async (req, res, next) => {
     res.json(user);
   } catch (error) {
     next(new AppErr(error.message, 500));
+    console.log(error.message);
   }
 };
 const deleteProfileController = async (req, res, next) => {
