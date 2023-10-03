@@ -128,7 +128,7 @@ const AuthContextProvider = ({ children }) => {
   //login action
   const loginUserAction = async (formData) => {
     if (state.userAuth && state.userAuth.token) {
-      window.location.href = "#/home";
+      window.location.href = "/home";
       return;
     }
 
@@ -146,12 +146,13 @@ const AuthContextProvider = ({ children }) => {
         });
       }
       //Redirect
-      window.location.href = "#/home";
+      return true;
     } catch (error) {
       dispatch({
         type: LOGIN_FAILED,
         payload: error?.response?.data?.message,
       });
+      return false;
     }
   };
   const fetchProfileAction = async () => {

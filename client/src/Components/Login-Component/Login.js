@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import "./login.css";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { authContext } from "../../Context/Auth/AuthContext";
 
 const Login = () => {
+  const history = useHistory();
   const { loginUserAction, userAuth } = useContext(authContext);
   //form data
 
@@ -22,10 +23,13 @@ const Login = () => {
   };
 
   //submit handler
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     //prevent reload on submit
     e.preventDefault();
-    loginUserAction(formData);
+    const success = await loginUserAction(formData);
+    if (success) {
+      history.push("/home");
+    }
   };
 
   return (
