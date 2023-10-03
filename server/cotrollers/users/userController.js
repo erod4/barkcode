@@ -30,8 +30,8 @@ const registerUserController = async (req, res, next) => {
     res.json({
       status: "success",
       firstname: user.firstname,
-      id: user._id,
-      token: generateToken(user._id),
+      id: user.id,
+      token: generateToken(user.id),
     });
   } catch (error) {
     return next(new Error(error));
@@ -54,8 +54,8 @@ const loginUserController = async (req, res, next) => {
     res.json({
       status: "success",
       firstname: userFound.firstname,
-      id: userFound._id,
-      token: generateToken(userFound._id),
+      id: userFound.id,
+      token: generateToken(userFound.id),
     });
   } catch (error) {
     console.log(error);
