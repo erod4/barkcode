@@ -143,6 +143,7 @@ const AuthContextProvider = ({ children }) => {
       //Redirect
       window.location.href = "#/home";
     } catch (error) {
+      console.log(error);
       dispatch({
         type: LOGIN_FAILED,
         payload: error?.response?.data?.message,
