@@ -5,4 +5,3 @@ RewriteRule ^ - [L]
 
 # Fallback all other routes to index.html
 RewriteRule ^ /public/index.html [L]
-/Users/mini/Documents/test/barkcode/client/src/index.js
