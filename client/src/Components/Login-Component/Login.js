@@ -8,7 +8,7 @@ const Login = () => {
   const { loginUserAction, userAuth } = useContext(authContext);
   //form data
   if (userAuth?.userAuth?.token) {
-    window.location.href = "/home";
+    window.location.href = "#/home";
   }
   const [formData, setFormData] = useState({
     email: "",

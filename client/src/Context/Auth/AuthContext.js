@@ -141,7 +141,7 @@ const AuthContextProvider = ({ children }) => {
         });
       }
       //Redirect
-      window.location.href = "/home";
+      window.location.href = "#/home";
     } catch (error) {
       dispatch({
         type: LOGIN_FAILED,
@@ -186,7 +186,7 @@ const AuthContextProvider = ({ children }) => {
           payload: res.data,
         });
       }
-      window.location.href = "/home";
+      window.location.href = "#/home";
     } catch (error) {
       dispatch({
         type: REGISTER_FAIL,
