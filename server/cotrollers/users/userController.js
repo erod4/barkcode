@@ -5,7 +5,8 @@ const generateToken = require("../../utils/generateToken");
 const isLoggedIn = require("../../middlewares/isLoggedIn");
 
 const registerUserController = async (req, res, next) => {
-  const { firstname, lastname, email, password } = req.body;
+  const { firstname, lastname, password } = req.body;
+  const email = req.body.email.toLowerCase();
   try {
     //check if email exist
     const userFound = await User.findOne({ email });
@@ -37,7 +38,8 @@ const registerUserController = async (req, res, next) => {
   }
 };
 const loginUserController = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { password } = req.body;
+  const email = req.body.email.toLowerCase();
   try {
     //check if email exists
     const userFound = await User.findOne({ email });
@@ -97,7 +99,8 @@ const deleteProfileController = async (req, res, next) => {
 };
 const updateProfileController = async (req, res, next) => {
   try {
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, password } = req.body;
+    const email = req.body.email.toLowerCase();
     console.log(req.body);
     //*check if email exists
     if (req.body.email) {
