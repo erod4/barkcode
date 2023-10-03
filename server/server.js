@@ -29,7 +29,6 @@ app.use("/api/v1/QRCode", qrCodeRoute);
 app.use("/api/v1/photo", photoRoute);
 //Routes
 //*user Route
-app.use(express.static(path.join(__dirname, "build")));
 
 //Error handlers
 app.use(globalErrorHandler);
