@@ -128,7 +128,7 @@ const AuthContextProvider = ({ children }) => {
   //login action
   const loginUserAction = async (formData) => {
     if (state.userAuth && state.userAuth.token) {
-      window.location.href = "/home";
+      window.location.href = "#/home";
       return;
     }
 

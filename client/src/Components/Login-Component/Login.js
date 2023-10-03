@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import "./login.css";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { authContext } from "../../Context/Auth/AuthContext";
 
 const Login = () => {
-  const history = useHistory();
   const { loginUserAction, userAuth } = useContext(authContext);
   //form data
 
@@ -28,7 +27,7 @@ const Login = () => {
     e.preventDefault();
     const success = await loginUserAction(formData);
     if (success) {
-      history.push("/home");
+      window.location.href = "#/home";
     }
   };
 
