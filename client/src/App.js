@@ -37,7 +37,7 @@ function App() {
         <Route path="/add-pet" element={<AddPet />}></Route>
         <Route path="/create-alert" element={<AddAlert />}></Route>
 
-        <Route path="*" element={<NotFound />}></Route>
+        {/* <Route path="*" element={<NotFound />}></Route> */}
       </Routes>
     </HashRouter>
   );
