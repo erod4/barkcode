@@ -143,7 +143,6 @@ const AuthContextProvider = ({ children }) => {
       //Redirect
       window.location.href = "#/home";
     } catch (error) {
-      console.log(error);
       dispatch({
         type: LOGIN_FAILED,
         payload: error?.response?.data?.message,
@@ -170,6 +169,7 @@ const AuthContextProvider = ({ children }) => {
         type: FETCH_PROFILE_FAIL,
         payload: error?.response?.data?.message,
       });
+      console.log(error);
     }
   };
   const registerUserAction = async (formData) => {
