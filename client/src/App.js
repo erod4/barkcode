@@ -1,5 +1,5 @@
 import "./style.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./Components/Landing-Page_Component/Landing";
 import Login from "./Components/Login-Component/Login";
 import Register from "./Components/Register-Component/Register";
@@ -20,7 +20,7 @@ import EditPetProfile from "./Components/Edit-Pet_profile/EditPetProfile";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Landing />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -39,7 +39,7 @@ function App() {
 
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
