@@ -133,11 +133,7 @@ const AuthContextProvider = ({ children }) => {
       },
     };
     try {
-      const res = await axios.post(
-        `http://localhost:8080/api/v1/users/login`,
-        formData,
-        config
-      );
+      const res = await axios.post(`${API_URL_USER}/login`, formData, config);
       if (res?.data?.status === "success") {
         dispatch({
           type: LOGIN_SUCCESS,
