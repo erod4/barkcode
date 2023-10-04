@@ -128,7 +128,7 @@ export const PetContextProvider = ({ children }) => {
 
       //make api call
       const res = await axios.get(
-        `${API_URL_PET}/${id}?latitude=${lat}&longitude=${lng}`,
+        `${API_URL_PET}${id}?latitude=${lat}&longitude=${lng}`,
         config
       );
 
@@ -163,6 +163,7 @@ export const PetContextProvider = ({ children }) => {
           payload: res?.data,
         });
       }
+      console.log(res);
     } catch (error) {
       dispatch({
         type: PET_DELETE_FAILED,
