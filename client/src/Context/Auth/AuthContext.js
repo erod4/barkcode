@@ -128,7 +128,7 @@ const AuthContextProvider = ({ children }) => {
   //login action
   const loginUserAction = async (formData) => {
     if (state.userAuth && state.userAuth.token) {
-      window.location.href = "#/home";
+      window.location.href = "/home";
       return;
     }
 
@@ -193,7 +193,7 @@ const AuthContextProvider = ({ children }) => {
           payload: res.data,
         });
       }
-      window.location.href = "#/home";
+      window.location.href = "/home";
     } catch (error) {
       dispatch({
         type: REGISTER_FAIL,
