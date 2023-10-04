@@ -13,6 +13,7 @@ const Home = () => {
   //dispatch
   useEffect(() => {
     fetchProfileAction();
+    window.location.reload();
   }, []);
 
   return (
