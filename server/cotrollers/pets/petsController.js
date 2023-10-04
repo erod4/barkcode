@@ -101,6 +101,7 @@ const getSinglePetController = async (req, res, next) => {
       });
     }
   } catch (error) {
+    console.log(error);
     next(new AppErr(error, 400));
   }
 };
