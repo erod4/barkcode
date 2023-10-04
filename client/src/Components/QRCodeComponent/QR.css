@@ -17,19 +17,26 @@
   align-items: center;
   flex-direction: column;
 }
-/* #html5-qrcode-anchor-scan-type-change {
+#html5-qrcode-anchor-scan-type-change {
   display: none;
   color: #eee;
   z-index: -10;
   pointer-events: none;
 }
+/* 
 #reader__dashboard_section span {
   display: none;
   color: #eee;
   z-index: -10;
   pointer-events: none;
 }
+*/
 #html5-qrcode-button-camera-permission {
   height: 30px;
   z-index: 4;
-} */
+}
+@media (min-width: 768px) {
+  #reader {
+    width: 40%;
+  }
+}

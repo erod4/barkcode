@@ -10,8 +10,6 @@ const QRCode = () => {
         width: 200,
         height: 200,
       },
-      fps: 5,
-      fileInputs: false,
     });
 
     console.log(scanner);
