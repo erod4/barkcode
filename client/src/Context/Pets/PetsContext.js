@@ -109,7 +109,7 @@ export const PetContextProvider = ({ children }) => {
           payload: res?.data,
         });
       }
-      window.location.href = "/manage-pets/";
+      window.location.href = "#/manage-pets/";
     } catch (error) {
       dispatch({
         type: PET_CREATION_FAILED,

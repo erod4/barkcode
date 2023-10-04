@@ -128,7 +128,7 @@ const AuthContextProvider = ({ children }) => {
   //login action
   const loginUserAction = async (formData) => {
     if (state.userAuth && state.userAuth.token) {
-      window.location.href = "/home";
+      window.location.href = "#/home";
 
       return;
     }
@@ -146,7 +146,7 @@ const AuthContextProvider = ({ children }) => {
           payload: res.data,
         });
         await fetchProfileAction();
-        window.location.href = "/home";
+        window.location.href = "#/home";
       }
       //Redirect
     } catch (error) {
@@ -196,7 +196,7 @@ const AuthContextProvider = ({ children }) => {
           payload: res.data,
         });
         await fetchProfileAction();
-        window.location.href = "/home";
+        window.location.href = "#/home";
       }
     } catch (error) {
       dispatch({
