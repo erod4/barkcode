@@ -195,8 +195,9 @@ const AuthContextProvider = ({ children }) => {
           type: REGISTER_SUCCESS,
           payload: res.data,
         });
+        await fetchProfileAction();
+        window.location.href = "/home";
       }
-      window.location.href = "/home";
     } catch (error) {
       dispatch({
         type: REGISTER_FAIL,
