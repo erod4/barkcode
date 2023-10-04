@@ -85,6 +85,7 @@ export const AlertContextProvider = ({ children }) => {
         type: ALERT_DELETE_FAILED,
         payload: error?.response?.data?.message,
       });
+      console.log(error);
     }
   };
   return (

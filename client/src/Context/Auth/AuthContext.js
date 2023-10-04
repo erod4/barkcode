@@ -164,7 +164,7 @@ const AuthContextProvider = ({ children }) => {
           Authorization: `Bearer ${state?.userAuth?.token}`,
         },
       };
-      console.log(state?.userAuth?.token);
+
       const res = await axios.get(`${API_URL_USER}/profile`, config);
       console.log(res);
       if (res?.data) {
