@@ -144,6 +144,7 @@ export const PetContextProvider = ({ children }) => {
         type: PET_DETAILS_FAILED,
         payload: error?.data?.response?.message,
       });
+      console.log(error);
     }
   };
 
@@ -167,6 +168,7 @@ export const PetContextProvider = ({ children }) => {
         type: PET_DELETE_FAILED,
         payload: error?.response?.data?.message,
       });
+      console.log(error);
     }
   };
 
