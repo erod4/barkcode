@@ -63,8 +63,8 @@ const loginUserController = async (req, res, next) => {
   }
 };
 const getProfileController = async (req, res, next) => {
-  const id = req.user;
   try {
+    const id = req.user;
     const user = await User.findById(id)
       .populate({
         path: "pets",
