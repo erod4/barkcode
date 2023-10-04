@@ -145,15 +145,15 @@ const AuthContextProvider = ({ children }) => {
           type: LOGIN_SUCCESS,
           payload: res.data,
         });
+        await fetchProfileAction();
+        window.location.href = "/home";
       }
       //Redirect
-      return true;
     } catch (error) {
       dispatch({
         type: LOGIN_FAILED,
         payload: error?.response?.data?.message,
       });
-      return false;
     }
   };
   const fetchProfileAction = async () => {
