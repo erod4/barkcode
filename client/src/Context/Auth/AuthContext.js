@@ -128,7 +128,8 @@ const AuthContextProvider = ({ children }) => {
   //login action
   const loginUserAction = async (formData) => {
     if (state.userAuth && state.userAuth.token) {
-      window.location.href = "/resources";
+      window.location.href = "/home";
+      window.location.reload;
       return;
     }
 
@@ -163,6 +164,7 @@ const AuthContextProvider = ({ children }) => {
           Authorization: `Bearer ${state?.userAuth?.token}`,
         },
       };
+      console.log(state?.userAuth?.token);
       const res = await axios.get(`${API_URL_USER}/profile`, config);
       console.log(res);
       if (res?.data) {
