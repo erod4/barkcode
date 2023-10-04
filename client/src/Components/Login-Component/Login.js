@@ -25,10 +25,7 @@ const Login = () => {
   const onSubmitHandler = async (e) => {
     //prevent reload on submit
     e.preventDefault();
-    const success = await loginUserAction(formData);
-    if (success) {
-      window.location.href = "#/home";
-    }
+    await loginUserAction(formData);
   };
 
   return (
