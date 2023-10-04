@@ -15,7 +15,7 @@ userRoute.post("/register", registerUserController);
 
 userRoute.post("/login", loginUserController);
 
-userRoute.get("/profile/", isLoggedIn, getProfileController);
+userRoute.get("/profile", isLoggedIn, getProfileController);
 
 userRoute.delete("/", isLoggedIn, deleteProfileController);
 
