@@ -63,6 +63,7 @@ const getSinglePetController = async (req, res, next) => {
       req.query.latitude !== "undefined" &&
       req.query.longitude !== "undefined"
     ) {
+      console.log(req.query);
       if (req.query.latitude !== "null" && req.query.longitude !== "null") {
         const res = await client.reverseGeocode({
           params: {
