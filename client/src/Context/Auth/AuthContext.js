@@ -10,7 +10,7 @@ import {
   REGISTER_FAIL,
   UPDATE_PROFILE,
   UPDATE_PROFILE_FAIL,
-  DELETE_PROFILE,
+  DELETE_PROFILE_SUCCESS,
   DELETE_PROFILE_FAIL,
 } from "./AuthActionTyes";
 import {
@@ -103,7 +103,7 @@ const reducer = (state, action) => {
         loading: false,
         profile: null,
       };
-    case DELETE_PROFILE:
+    case DELETE_PROFILE_SUCCESS:
       localStorage.removeItem("userAuth");
       return {
         ...state,
@@ -247,9 +247,10 @@ const AuthContextProvider = ({ children }) => {
         },
       };
       const res = await axios.delete(API_URL_USER, config);
+      console.log(res?.data?.status);
       if (res?.data?.status === "sucesss") {
         dispatch({
-          type: DELETE_PROFILE,
+          type: DELETE_PROFILE_SUCCESS,
           payload: res.data,
         });
       }
