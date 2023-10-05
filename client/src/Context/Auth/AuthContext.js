@@ -104,6 +104,7 @@ const reducer = (state, action) => {
         profile: null,
       };
     case DELETE_PROFILE_SUCCESS:
+      console.log('got here');
       localStorage.removeItem("userAuth");
       return {
         ...state,
