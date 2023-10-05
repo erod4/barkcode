@@ -9,7 +9,7 @@ const Nav = () => {
   useEffect(() => {
     fetchProfileAction();
   }, []);
-  console.log(profile.firstname);
+
   return (
     <nav>
       <Link>Home</Link>

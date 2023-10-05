@@ -53,7 +53,7 @@ export const AlertContextProvider = ({ children }) => {
           type: ALERT_CREATION_SUCCESS,
           payload: res.data,
         });
-        console.log(res);
+    
       }
       window.location.href = "/home";
     } catch (error) {
@@ -85,7 +85,7 @@ export const AlertContextProvider = ({ children }) => {
         type: ALERT_DELETE_FAILED,
         payload: error?.response?.data?.message,
       });
-      console.log(error);
+
     }
   };
   return (

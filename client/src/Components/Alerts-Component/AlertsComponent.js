@@ -4,7 +4,7 @@ import { AlertContext } from "../../Context/Alert/AlertContext";
 const Alerts = ({ alerts }) => {
   const { deleteAlertAction } = useContext(AlertContext);
   const handleDeleteClick = (id) => {
-    console.log(id);
+  
     deleteAlertAction(id);
     // window.location.reload();
   };

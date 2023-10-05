@@ -144,7 +144,7 @@ export const PetContextProvider = ({ children }) => {
         type: PET_DETAILS_FAILED,
         payload: error?.data?.response?.message,
       });
-      console.log(error);
+  
     }
   };
 
@@ -163,19 +163,18 @@ export const PetContextProvider = ({ children }) => {
           payload: res?.data,
         });
       }
-      console.log(res);
+   
     } catch (error) {
       dispatch({
         type: PET_DELETE_FAILED,
         payload: error?.response?.data?.message,
       });
-      console.log(error);
     }
   };
 
   const updatePetAction = async (id, formData) => {
     try {
-      console.log(formData);
+ 
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",

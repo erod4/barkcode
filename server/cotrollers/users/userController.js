@@ -87,10 +87,10 @@ const getProfileController = async (req, res, next) => {
 };
 const deleteProfileController = async (req, res, next) => {
   try {
-    console.log(req.user);
+ 
     //*find user by id
     const deletedUser=await User.findByIdAndDelete(req.user);
-    console.log("Deleted: ",deletedUser );
+
 
     return res.status(200).json({
       status: "success",

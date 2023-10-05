@@ -5,7 +5,7 @@ import { petContext } from "../../Context/Pets/PetsContext";
 
 const AddPet = ({ scanResult }) => {
   //qr code
-  console.log(scanResult);
+ 
   const [profilePicture, setProfilePicture] = useState(null);
 
   const { postPetAction } = useContext(petContext);
@@ -33,9 +33,9 @@ const AddPet = ({ scanResult }) => {
   };
 
   const onFileInputChange = (e) => {
-    console.log("new");
+
     const file = e.target.files[0];
-    console.log(e.target);
+   
     setProfilePicture(file);
     setFormData({ ...formData, file: profilePicture });
   };
@@ -44,7 +44,7 @@ const AddPet = ({ scanResult }) => {
   const onSubmitHandler = (e) => {
     //prevent reload on submit
     e.preventDefault();
-    console.log(formData);
+   
     postPetAction(formData);
   };
   return (

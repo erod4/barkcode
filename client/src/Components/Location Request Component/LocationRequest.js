@@ -29,12 +29,10 @@ const LocationRequest = () => {
           setIsOpen(false);
         },
         (error) => {
-          console.log(error);
+         window.alert(error);
         }
       );
-    } else {
-      console.log("Browser Does Not Support");
-    }
+    } 
   };
 
   return (

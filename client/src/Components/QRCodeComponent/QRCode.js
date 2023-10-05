@@ -12,17 +12,16 @@ const QRCode = () => {
       },
     });
 
-    console.log(scanner);
+
 
     scanner.render(
       (result) => {
         scanner.clear();
-        console.log(scanner);
+      
         setScanResult(result);
       },
       (error) => {
-        console.log(error);
-        console.log(scanner);
+       
       }
     );
   }, []);

@@ -29,7 +29,7 @@ const Register = () => {
     registerUserAction(formData);
   };
 
-  console.log(error);
+
 
   return (
     <div className="register-page">
