@@ -248,7 +248,7 @@ const AuthContextProvider = ({ children }) => {
       };
       const res = await axios.delete(API_URL_USER, config);
       console.log(res?.data?.status);
-      if (res?.data?.status === "sucesss") {
+      if (res?.data?.status === "sucess") {
         dispatch({
           type: DELETE_PROFILE_SUCCESS,
           payload: res.data,
