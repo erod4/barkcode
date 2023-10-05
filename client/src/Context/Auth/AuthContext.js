@@ -225,7 +225,7 @@ const AuthContextProvider = ({ children }) => {
         },
       };
       const res = await axios.put(API_URL_USER, formData, config);
-      if (res?.data?.status === "sucesss") {
+      if (res?.data?.status === "success") {
         dispatch({
           type: UPDATE_PROFILE,
           payload: res.data,
@@ -249,7 +249,7 @@ const AuthContextProvider = ({ children }) => {
       };
       const res = await axios.delete(API_URL_USER, config);
      
-      if (res?.data?.status === "sucess") {
+      if (res?.data?.status === "success") {
         dispatch({
           type: DELETE_PROFILE_SUCCESS,
           payload: res.data,
