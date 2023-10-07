@@ -24,11 +24,11 @@ const QRCode = () => {
 
   return (
     <>
-      <h1>Please scan pet tag QR code to continue.</h1>
       {scanResult ? (
         <AddPet scanResult={scanResult} />
       ) : (
         <div className="qr-code-page">
+          <h1>Please scan pet tag QR code to continue.</h1>
           <div id="reader"></div>
         </div>
       )}

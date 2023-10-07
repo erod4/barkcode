@@ -17,6 +17,12 @@
   align-items: center;
   flex-direction: column;
 }
+.qr-title {
+  color: #eee;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
 #html5-qrcode-anchor-scan-type-change {
   display: none;
   color: #eee;
