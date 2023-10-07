@@ -12,22 +12,19 @@ const QRCode = () => {
       },
     });
 
-
-
     scanner.render(
       (result) => {
         scanner.clear();
-      
+
         setScanResult(result);
       },
-      (error) => {
-       
-      }
+      (error) => {}
     );
   }, []);
 
   return (
     <>
+      <h1>Please scan pet tag QR code to continue.</h1>
       {scanResult ? (
         <AddPet scanResult={scanResult} />
       ) : (
