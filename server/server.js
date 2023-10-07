@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 require("dotenv").config();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const userRoute = require("./routes/users/usersRoute");
 const alertRoute = require("./routes/alerts/alertsRoute");
 const notificationRoute = require("./routes/notifications/notificationRoute");
@@ -13,7 +13,7 @@ const photoRoute = require("./routes/images/imgRoute");
 require("./config/dbConnect");
 
 const corsOptions = {
-  origin: "https://lostbarkcode.onrender.com",
+  origin: "https://lostbarkcodes.com",
 };
 
 //middlewares
@@ -28,7 +28,10 @@ app.use("/api/v1/pets", petsRoute);
 app.use("/api/v1/QRCode", qrCodeRoute);
 app.use("/api/v1/photo", photoRoute);
 //Routes
-//*user Route
+//test
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
 
 //Error handlers
 app.use(globalErrorHandler);

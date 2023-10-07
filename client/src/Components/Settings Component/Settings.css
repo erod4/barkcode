@@ -197,6 +197,7 @@
     height: 70vh;
   }
   .confirm-delete-container {
-    width: 30%;
+    width: 20%;
+    max-width: 300px;
   }
 }

@@ -104,7 +104,6 @@ const reducer = (state, action) => {
         profile: null,
       };
     case DELETE_PROFILE_SUCCESS:
-      console.log('got here');
       localStorage.removeItem("userAuth");
       return {
         ...state,
@@ -167,19 +166,20 @@ const AuthContextProvider = ({ children }) => {
       };
 
       const res = await axios.get(`${API_URL_USER}/profile`, config);
-     
+
       if (res?.data) {
         dispatch({
           type: FETCH_PROFILE_SUCCESS,
           payload: res.data,
         });
       }
+      console.log(res);
     } catch (error) {
       dispatch({
         type: FETCH_PROFILE_FAIL,
         payload: error?.response?.data?.message,
       });
-
+      console.log(error);
     }
   };
   const registerUserAction = async (formData) => {
@@ -248,7 +248,7 @@ const AuthContextProvider = ({ children }) => {
         },
       };
       const res = await axios.delete(API_URL_USER, config);
-     console.log(res);
+
       if (res?.data?.status === "success") {
         dispatch({
           type: DELETE_PROFILE_SUCCESS,
