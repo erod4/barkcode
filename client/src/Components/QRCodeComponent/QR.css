@@ -17,7 +17,7 @@
   align-items: center;
   flex-direction: column;
 }
-.qr-title {
+.qr-code-page h1 {
   color: #eee;
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;

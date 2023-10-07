@@ -173,13 +173,11 @@ const AuthContextProvider = ({ children }) => {
           payload: res.data,
         });
       }
-      console.log(res);
     } catch (error) {
       dispatch({
         type: FETCH_PROFILE_FAIL,
         payload: error?.response?.data?.message,
       });
-      console.log(error);
     }
   };
   const registerUserAction = async (formData) => {
