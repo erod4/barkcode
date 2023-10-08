@@ -7,13 +7,17 @@ import AuthContextProvider from "./Context/Auth/AuthContext";
 import { PetContextProvider } from "./Context/Pets/PetsContext";
 import { NotifContextProvider } from "./Context/Notifications/NotContext";
 import { AlertContextProvider } from "./Context/Alert/AlertContext";
+import ResetPassContextProvider from "./Context/ResetPassword/ResetPassContext";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthContextProvider>
     <PetContextProvider>
       <NotifContextProvider>
         <AlertContextProvider>
-          <App />
+          <ResetPassContextProvider>
+            <App />
+          </ResetPassContextProvider>
         </AlertContextProvider>
       </NotifContextProvider>
     </PetContextProvider>

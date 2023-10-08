@@ -6,6 +6,8 @@ const {
   getProfileController,
   deleteProfileController,
   updateProfileController,
+  resetPasswordController,
+  verifyResetController,
 } = require("../../cotrollers/users/userController");
 
 const userRoute = express.Router();
@@ -14,6 +16,8 @@ const userRoute = express.Router();
 userRoute.post("/register", registerUserController);
 
 userRoute.post("/login", loginUserController);
+userRoute.post("/reset", resetPasswordController);
+userRoute.post("/verify-reset", verifyResetController);
 
 userRoute.get("/profile", isLoggedIn, getProfileController);
 
