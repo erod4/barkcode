@@ -1,38 +1,40 @@
 import React, { useContext, useState } from "react";
-import "./ForgotPassword.css";
-
 import { ResetPassContext } from "../../Context/ResetPassword/ResetPassContext";
-const ForgotPassword = () => {
-  const { sendResetAction } = useContext(ResetPassContext);
-  const [formData, setFormData] = useState({
-    email: "",
-  });
-  const { email } = formData;
 
+const EnterCode = () => {
+  const { verifyResetAction } = useContext(ResetPassContext);
+  const [formData, setFormData] = useState({
+    resetCode: "",
+  });
+  const { resetCode } = formData;
   const onChangeInput = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    sendResetAction(formData);
+    verifyResetAction(formData);
   };
   return (
     <div className="reset-password-page">
       <div className="reset-password-container">
         <form onSubmit={onSubmitHandler} className="reset-password-form">
-          <h1>Forgot Password?</h1>
+          <h1>Enter Reset Code</h1>
           <div className="reset-password-form-div">
-            <label>Email</label>
+            <label>Code</label>
             <input
-              name="email"
+              name="resetCode"
+              value={resetCode}
               onChange={onChangeInput}
-              value={email}
+              maxLength={6}
               required
-              type="email"
+              type="text"
             />
           </div>
           <div className="reset-password-form-button-div">
-            <button>Send Reset Code</button>
+            <button>Send</button>
           </div>
         </form>
       </div>
@@ -40,4 +42,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default EnterCode;

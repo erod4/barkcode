@@ -3,6 +3,11 @@ const User = require("../../models/UserM");
 const AppErr = require("../../utils/appError");
 const generateToken = require("../../utils/generateToken");
 const isLoggedIn = require("../../middlewares/isLoggedIn");
+const generateResetCode = require("../../utils/generateResetCode");
+const {
+  generateTransporter,
+  generateMailOptions,
+} = require("../../utils/sendEmail");
 
 const registerUserController = async (req, res, next) => {
   const { firstname, lastname, password } = req.body;
@@ -62,6 +67,37 @@ const loginUserController = async (req, res, next) => {
     next(new AppErr(error.message, 500));
   }
 };
+const resetPasswordController = async (req, res, next) => {
+  try {
+    const email = req.body.email.toLowerCase();
+    const resetCode = generateResetCode();
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return next(new AppErr("User Doesn't Exist.", 400));
+    } else {
+      await User.findByIdAndUpdate(
+        user.id,
+        { resetCode, resetCodeExpiration: Date.now() + 300000 },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+      const transporter = generateTransporter;
+      const mailOptions = generateMailOptions(email, resetCode);
+      await transporter.sendMail(mailOptions);
+    }
+    res.json({
+      status: "success",
+    });
+  } catch (error) {
+    next(new AppErr(error.message, 500));
+    console.log(error);
+  }
+};
+
 const getProfileController = async (req, res, next) => {
   try {
     const id = req.user;
@@ -85,12 +121,37 @@ const getProfileController = async (req, res, next) => {
     console.log(error.message);
   }
 };
+const verifyResetController = async (req, res, next) => {
+  try {
+    const { resetCode } = req.body;
+    const user = await User.findOne({ resetCode });
+
+    if (!user) {
+      return next(new AppErr("Incorrect Reset Code", 400));
+    } else {
+      await User.findByIdAndUpdate(
+        user.id,
+        { resetCode: "" },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+      res.json({
+        status: "success",
+        firstname: user.firstname,
+        id: user.id,
+        token: generateToken(user.id),
+      });
+    }
+  } catch (error) {
+    next(new AppErr(error.message, 500));
+  }
+};
 const deleteProfileController = async (req, res, next) => {
   try {
- 
     //*find user by id
-    const deletedUser=await User.findByIdAndDelete(req.user);
-
+    const deletedUser = await User.findByIdAndDelete(req.user);
 
     return res.status(200).json({
       status: "success",
@@ -102,8 +163,12 @@ const deleteProfileController = async (req, res, next) => {
 const updateProfileController = async (req, res, next) => {
   try {
     const { firstname, lastname, password } = req.body;
-    const email = req.body.email.toLowerCase();
-    console.log(req.body);
+
+    let email;
+    if (req.body.email) {
+      email = req.body.email.toLowerCase();
+    }
+
     //*check if email exists
     if (req.body.email) {
       const userFound = await User.findOne({ email });
@@ -131,7 +196,6 @@ const updateProfileController = async (req, res, next) => {
       );
     }
     if (req.body.lastname) {
-      console.log("got here");
       const user = await User.findByIdAndUpdate(
         req.user,
         { lastname },
@@ -164,6 +228,7 @@ const updateProfileController = async (req, res, next) => {
     //update other fields
   } catch (error) {
     next(new AppErr(error.message, 500));
+    console.log(error);
   }
 };
 
@@ -173,4 +238,6 @@ module.exports = {
   getProfileController,
   deleteProfileController,
   updateProfileController,
+  resetPasswordController,
+  verifyResetController,
 };

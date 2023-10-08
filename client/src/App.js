@@ -1,5 +1,5 @@
 import "./style.css";
-import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Landing from "./Components/Landing-Page_Component/Landing";
 import Login from "./Components/Login-Component/Login";
 import Register from "./Components/Register-Component/Register";
@@ -17,6 +17,8 @@ import Resources from "./Components/Resources Component/Resources";
 import Settings from "./Components/Settings Component/Settings";
 import LocationRequest from "./Components/Location Request Component/LocationRequest";
 import EditPetProfile from "./Components/Edit-Pet_profile/EditPetProfile";
+import EnterCode from "./Components/ForgotPassComponent/EnterCode";
+import NewPassword from "./Components/ForgotPassComponent/NewPassword";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/home" element={<Home />}></Route>
         <Route path="/edit-profile/:id" element={<EditPetProfile />}></Route>
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+        <Route path="/enter-code" element={<EnterCode />}></Route>
+        <Route path="/new-password" element={<NewPassword />}></Route>
         <Route path="/manage-pets/" element={<ManagePets />}></Route>
         <Route path="/resources" element={<Resources />}></Route>
         <Route path="/pet-profile/:id" element={<PetProfile />}></Route>
@@ -37,7 +41,7 @@ function App() {
         <Route path="/add-pet" element={<AddPet />}></Route>
         <Route path="/create-alert" element={<AddAlert />}></Route>
 
-        {/* <Route path="*" element={<NotFound />}></Route> */}
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </HashRouter>
   );
