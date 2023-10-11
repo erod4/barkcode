@@ -53,9 +53,8 @@ export const AlertContextProvider = ({ children }) => {
           type: ALERT_CREATION_SUCCESS,
           payload: res.data,
         });
-    
       }
-      window.location.href = "/home";
+      window.location.href = "#/home";
     } catch (error) {
       updateState({
         type: ALERT_CREATION_FAILED,
@@ -85,7 +84,6 @@ export const AlertContextProvider = ({ children }) => {
         type: ALERT_DELETE_FAILED,
         payload: error?.response?.data?.message,
       });
-
     }
   };
   return (
